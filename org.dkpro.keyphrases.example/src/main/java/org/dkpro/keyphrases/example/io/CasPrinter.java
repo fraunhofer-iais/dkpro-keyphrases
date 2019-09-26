@@ -1,4 +1,4 @@
-package org.dkpro.keyphrases.example;
+package org.dkpro.keyphrases.example.io;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;

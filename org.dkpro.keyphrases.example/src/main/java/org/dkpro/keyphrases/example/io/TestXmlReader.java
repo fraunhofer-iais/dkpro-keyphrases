@@ -1,4 +1,4 @@
-package org.dkpro.keyphrases.example;
+package org.dkpro.keyphrases.example.io;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;

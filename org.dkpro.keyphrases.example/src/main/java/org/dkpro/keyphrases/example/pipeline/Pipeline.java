@@ -1,8 +1,11 @@
-package org.dkpro.keyphrases.example;
+package org.dkpro.keyphrases.example.pipeline;
 
 import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
 import static org.apache.uima.fit.factory.CollectionReaderFactory.createReaderDescription;
 import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
+
+import org.dkpro.keyphrases.example.io.CasPrinter;
+import org.dkpro.keyphrases.example.io.TestXmlReader;
 
 import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
