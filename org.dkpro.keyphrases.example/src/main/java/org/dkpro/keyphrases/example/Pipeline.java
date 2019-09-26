@@ -22,6 +22,7 @@ public class Pipeline {
                 TestXmlReader.PARAM_PATTERNS, "[+]*.xml",
                 TestXmlReader.PARAM_LANGUAGE, "en"),
         createEngineDescription(BreakIteratorSegmenter.class),
+        
         createEngineDescription(CasPrinter.class)
     );
   }

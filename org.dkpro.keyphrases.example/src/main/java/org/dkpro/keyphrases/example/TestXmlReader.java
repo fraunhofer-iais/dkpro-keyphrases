@@ -30,18 +30,27 @@ public class TestXmlReader
 	{    
 		res = nextFile();
 		initCas(jcas, res);
+		
 
 		Element root;
+		XPath xpath;
 		try {
+			
 			SAXReader reader = new SAXReader();
 			Document document = reader.read(new BufferedInputStream(res.getInputStream()));
 			root = document.getRootElement();
+			jcas.setDocumentText(getText(root, "//body"));
+			
+		
 		}
 		catch (DocumentException e) {
 			throw new CollectionException(e);
 		}
 		catch (IOException e) {
 			throw new CollectionException(e);
+		} catch (JaxenException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		
@@ -61,12 +70,12 @@ public class TestXmlReader
 //				
 //			}
 			
-			jcas.setDocumentText("dummy text");
+			/*jcas.setDocumentText("dummy text");
 			
 			Lemma lemma = new Lemma(jcas, 0, 1);
 			lemma.setValue("keyphrase 1");
 			lemma.addToIndexes();
-				
+				*/
 //		}
 //		catch (JaxenException e) {
 //			throw new CollectionException(e);
