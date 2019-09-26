@@ -15,6 +15,8 @@ import org.jaxen.XPath;
 import org.jaxen.dom4j.Dom4jXPath;
 
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasResourceCollectionReader_ImplBase;
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 
 public class TestXmlReader
 	extends JCasResourceCollectionReader_ImplBase
@@ -42,27 +44,33 @@ public class TestXmlReader
 			throw new CollectionException(e);
 		}
 
+		
 		String text = "";
 
-		try {  
-			final XPath bodyXP = new Dom4jXPath("//");
-
-			text = getText((Element) bodyXP.selectSingleNode(root), "descendant::body");
-
-			final XPath criteriumXP = new Dom4jXPath("//criterium");
-			for (Object criteriumElement : criteriumXP.selectNodes(root)) {
-				Element criteriumNode = (Element) criteriumElement;
-
-				String name = getAttributeValue(criteriumNode, "name");
-
+//		try {  
+//			final XPath bodyXP = new Dom4jXPath("//");
+//
+//			text = getText((Element) bodyXP.selectSingleNode(root), "descendant::body");
+//
+//			final XPath criteriumXP = new Dom4jXPath("//criterium");
+//			for (Object criteriumElement : criteriumXP.selectNodes(root)) {
+//				Element criteriumNode = (Element) criteriumElement;
+//
+//				String name = getAttributeValue(criteriumNode, "name");
+//
+//				
+//			}
+			
+			jcas.setDocumentText("dummy text");
+			
+			Lemma lemma = new Lemma(jcas, 0, 1);
+			lemma.setValue("keyphrase 1");
+			lemma.addToIndexes();
 				
-			}
-			jcas.setDocumentText(text);
-				
-		}
-		catch (JaxenException e) {
-			throw new CollectionException(e);
-		}
+//		}
+//		catch (JaxenException e) {
+//			throw new CollectionException(e);
+//		}
 
 	}
 	
