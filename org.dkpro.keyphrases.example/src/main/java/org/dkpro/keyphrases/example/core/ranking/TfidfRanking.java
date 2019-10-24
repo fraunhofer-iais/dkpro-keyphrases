@@ -68,6 +68,7 @@ public class TfidfRanking extends JCasAnnotator_ImplBase {
             keyphrase.setScore(
                     getAggregatedTfidfScore(tfidfScores, aggregateFunction)
             );
+//            System.out.println(keyphrase.getKeyphrase() + " - " + getAggregatedTfidfScore(tfidfScores, aggregateFunction));
         }
     }
 
