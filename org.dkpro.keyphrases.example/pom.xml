@@ -131,5 +131,10 @@
     	</artifactId>
 			<version>20120616.1</version>
 		</dependency>
+		<dependency>
+			<groupId>com.googlecode.matrix-toolkits-java</groupId>
+			<artifactId>mtj</artifactId>
+			<version>1.0.4</version>
+		</dependency>
 	</dependencies>
 </project>

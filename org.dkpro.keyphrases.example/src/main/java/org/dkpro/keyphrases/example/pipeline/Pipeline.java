@@ -7,7 +7,6 @@ import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
 import org.dkpro.keyphrases.example.io.CasPrinter;
 import org.dkpro.keyphrases.example.io.TestXmlReader;
 
-import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 
 //import org.dkpro.core.opennlp.OpenNlpNamedEntityRecognizer;
