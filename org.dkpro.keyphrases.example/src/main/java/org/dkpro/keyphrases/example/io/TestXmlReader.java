@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 
 import org.apache.uima.collection.CollectionException;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.jcas.JCas;
 import org.dom4j.Attribute;
 import org.dom4j.Document;
@@ -22,6 +23,10 @@ public class TestXmlReader
 	extends JCasResourceCollectionReader_ImplBase
 {
 
+    public static final String PARAM_XPATH = "//*";
+    @ConfigurationParameter(name = PARAM_XPATH, mandatory = false)
+    private String xpath;
+
 	protected Resource res;
 
 	@Override
@@ -33,13 +38,12 @@ public class TestXmlReader
 		
 
 		Element root;
-		XPath xpath;
 		try {
 			
 			SAXReader reader = new SAXReader();
 			Document document = reader.read(new BufferedInputStream(res.getInputStream()));
 			root = document.getRootElement();
-			jcas.setDocumentText(getText(root, "//body"));
+			jcas.setDocumentText(getText(root, xpath));
 			
 		
 		}
