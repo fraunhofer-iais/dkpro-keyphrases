@@ -30,8 +30,8 @@ public class TfidfPosExample {
 
 		runPipeline(
 		        createReaderDescription(TextReader.class,
-		            TextReader.PARAM_SOURCE_LOCATION, "/Users/paggarwal/Downloads/news/",
-		            TextReader.PARAM_PATTERNS, "[+]Etat/*11*.txt",
+		            TextReader.PARAM_SOURCE_LOCATION, args[0],
+		            TextReader.PARAM_PATTERNS, args[1],
 		            TextReader.PARAM_LANGUAGE, "de"),
 		        createEngineDescription(BreakIteratorSegmenter.class),
 		        createEngineDescription(OpenNlpPosTagger.class,
@@ -42,7 +42,7 @@ public class TfidfPosExample {
 		        createEngineDescription(KeyphraseMerger.class,
 		        		KeyphraseMerger.PARAM_MAX_LENGTH, 2),
 		        createEngineDescription(TfIdfAnnotator.class,
-		        		TfIdfAnnotator.PARAM_TFDF_PATH, "target/tfidf_ngram.model",
+                        TfIdfAnnotator.PARAM_TFDF_PATH, args[2],
 		        		TfIdfAnnotator.PARAM_FEATURE_PATH, Keyphrase.class.getName(),
 		        		TfIdfAnnotator.PARAM_IDF_MODE, TfIdfAnnotator.WeightingModeIdf.LOG,
 		        		TfIdfAnnotator.PARAM_TF_MODE, TfIdfAnnotator.WeightingModeTf.NORMAL),

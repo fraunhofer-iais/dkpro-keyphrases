@@ -22,8 +22,8 @@ public class TFIdfWriterExample {
 		//String input_file = "";
 		runPipeline(
 		        createReaderDescription(TextReader.class,
-		        		TextReader.PARAM_SOURCE_LOCATION, "/Users/paggarwal/Downloads/news/",
-		        		TextReader.PARAM_PATTERNS, "[+]**/*.txt",
+                        TextReader.PARAM_SOURCE_LOCATION, args[0],
+                        TextReader.PARAM_PATTERNS, args[1],
 		        		TextReader.PARAM_LANGUAGE, "de"),
 		        createEngineDescription(BreakIteratorSegmenter.class),
 		        //createEngineDescription(NGramAnnotator.class,
@@ -32,13 +32,13 @@ public class TFIdfWriterExample {
 		        		NGramAnnotator.PARAM_N, 2),
 		        createEngineDescription(
 		        		TfIdfWriter.class,
-		        		TfIdfWriter.PARAM_TARGET_LOCATION, "target/tfidf_ngram.model",
+                        TfIdfWriter.PARAM_TARGET_LOCATION, args[2],
 		        		TfIdfWriter.PARAM_FEATURE_PATH, NGram.class.getName())
 		        		
 		        
 		    );
 
-        DfModel dfModel = TfidfUtils.getDfModel("target/tfidf_ngram.model");
+        DfModel dfModel = TfidfUtils.getDfModel(args[2]);
 
         System.out.println(dfModel.getDf("John Lennon"));
         System.out.println(dfModel.getDf("Angela Merkel"));
