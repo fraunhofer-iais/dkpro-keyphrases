@@ -101,14 +101,13 @@ public class TestXmlReader
 	        throws JaxenException
 	{
 	    final XPath xp = new Dom4jXPath(xPath);
-	    
+	    StringBuilder text = new StringBuilder();
 	    for (Object element : xp.selectNodes(root)) {
 	        if (element instanceof Element) {
 	            Element node = (Element) element;
-	            return node.getText();
+	            text.append(node.getText());
 	        }
 	    }
-	    
-	    return null;
+	    return text.toString();
 	}
 }
