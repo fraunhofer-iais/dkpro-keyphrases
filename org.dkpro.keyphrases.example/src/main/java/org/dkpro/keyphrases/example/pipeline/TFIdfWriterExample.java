@@ -4,6 +4,8 @@ import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDesc
 import static org.apache.uima.fit.factory.CollectionReaderFactory.createReaderDescription;
 import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
 
+import org.dkpro.keyphrases.example.io.TestXmlReader;
+
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.NGram;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.TfIdfWriter;
@@ -21,10 +23,11 @@ public class TFIdfWriterExample {
 		
 		//String input_file = "";
 		runPipeline(
-		        createReaderDescription(TextReader.class,
-                        TextReader.PARAM_SOURCE_LOCATION, args[0],
-                        TextReader.PARAM_PATTERNS, args[1],
-		        		TextReader.PARAM_LANGUAGE, "de"),
+                createReaderDescription(TestXmlReader.class,
+                        TestXmlReader.PARAM_SOURCE_LOCATION, args[0],
+                        TestXmlReader.PARAM_PATTERNS, args[1],
+                        TestXmlReader.PARAM_XPATH, args[2],
+                        TestXmlReader.PARAM_LANGUAGE, "de"),
 		        createEngineDescription(BreakIteratorSegmenter.class),
 		        //createEngineDescription(NGramAnnotator.class,
 		        //		NGramAnnotator.PARAM_N, 1),		        		
@@ -32,17 +35,18 @@ public class TFIdfWriterExample {
 		        		NGramAnnotator.PARAM_N, 2),
 		        createEngineDescription(
 		        		TfIdfWriter.class,
-                        TfIdfWriter.PARAM_TARGET_LOCATION, args[2],
+                        TfIdfWriter.PARAM_TARGET_LOCATION, args[3],
 		        		TfIdfWriter.PARAM_FEATURE_PATH, NGram.class.getName())
 		        		
 		        
 		    );
 
-        DfModel dfModel = TfidfUtils.getDfModel(args[2]);
+        DfModel dfModel = TfidfUtils.getDfModel(args[3]);
 
         System.out.println(dfModel.getDf("John Lennon"));
         System.out.println(dfModel.getDf("Angela Merkel"));
         System.out.println(dfModel.getDf("Angela"));
+        System.out.println(dfModel.getDf("Gauck"));
         System.out.println(dfModel.getDocumentCount());
 	}
 
