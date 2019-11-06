@@ -27,16 +27,16 @@ public class TFIdfWriterExample {
                         TestXmlReader.PARAM_SOURCE_LOCATION, args[0],
                         TestXmlReader.PARAM_PATTERNS, args[1],
                         TestXmlReader.PARAM_XPATH, args[2],
-                        TestXmlReader.PARAM_LANGUAGE, "de"),
+                        TestXmlReader.PARAM_LANGUAGE, "de",
+                        TestXmlReader.PARAM_LOG_FREQ, 1000),
 		        createEngineDescription(BreakIteratorSegmenter.class),
-		        //createEngineDescription(NGramAnnotator.class,
-		        //		NGramAnnotator.PARAM_N, 1),		        		
 		        createEngineDescription(NGramAnnotator.class,
 		        		NGramAnnotator.PARAM_N, 2),
 		        createEngineDescription(
 		        		TfIdfWriter.class,
                         TfIdfWriter.PARAM_TARGET_LOCATION, args[3],
-		        		TfIdfWriter.PARAM_FEATURE_PATH, NGram.class.getName())
+                        TfIdfWriter.PARAM_FEATURE_PATH, NGram.class.getName(),
+                        TfIdfWriter.PARAM_LOWERCASE, true)
 		        		
 		        
 		    );
