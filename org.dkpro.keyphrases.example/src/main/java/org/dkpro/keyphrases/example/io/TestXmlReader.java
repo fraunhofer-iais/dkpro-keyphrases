@@ -41,7 +41,7 @@ public class TestXmlReader
 		try {
 			
 			SAXReader reader = new SAXReader();
-			Document document = reader.read(new BufferedInputStream(res.getInputStream()));
+			Document document = reader.read(new BufferedInputStream(new UnicodeFilter(res.getInputStream())));
 			root = document.getRootElement();
 			jcas.setDocumentText(getText(root, xpath));
 			
