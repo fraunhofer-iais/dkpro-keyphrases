@@ -16,7 +16,7 @@ public class UnicodeFilter
     private boolean isAllowed(int c)
     {
         // see https://www.w3.org/TR/xml/#charsets
-        if (c < 0x20) {
+        if (c >= 0x0 && c < 0x20) {
             if (c == 0x9 || c == 0xA || c == 0xD) {
                 return true;
             }
