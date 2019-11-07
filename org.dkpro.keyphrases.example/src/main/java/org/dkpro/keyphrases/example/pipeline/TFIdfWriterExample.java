@@ -4,6 +4,7 @@ import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDesc
 import static org.apache.uima.fit.factory.CollectionReaderFactory.createReaderDescription;
 import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
 
+import org.dkpro.keyphrases.example.core.filter.NGramLengthFilter;
 import org.dkpro.keyphrases.example.io.TestXmlReader;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.NGram;
@@ -32,11 +33,14 @@ public class TFIdfWriterExample {
 		        createEngineDescription(BreakIteratorSegmenter.class),
 		        createEngineDescription(NGramAnnotator.class,
 		        		NGramAnnotator.PARAM_N, 2),
+                createEngineDescription(NGramLengthFilter.class,
+                        NGramLengthFilter.MIN_NGRAM_LENGTH, 3,
+                        NGramLengthFilter.MAX_NGRAM_LENGTH, 100),
 		        createEngineDescription(
 		        		TfIdfWriter.class,
                         TfIdfWriter.PARAM_TARGET_LOCATION, args[3],
                         TfIdfWriter.PARAM_FEATURE_PATH, NGram.class.getName(),
-                        TfIdfWriter.PARAM_LOWERCASE, true)
+                        TfIdfWriter.PARAM_LOWERCASE, false)
 		        		
 		        
 		    );
@@ -47,6 +51,8 @@ public class TFIdfWriterExample {
         System.out.println(dfModel.getDf("Angela Merkel"));
         System.out.println(dfModel.getDf("Angela"));
         System.out.println(dfModel.getDf("Gauck"));
+        System.out.println(dfModel.getDf("zu"));
+        System.out.println(dfModel.getLowercase());
         System.out.println(dfModel.getDocumentCount());
 	}
 
