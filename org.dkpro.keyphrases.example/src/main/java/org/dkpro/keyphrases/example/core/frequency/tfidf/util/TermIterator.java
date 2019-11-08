@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.util;
+package org.dkpro.keyphrases.example.core.frequency.tfidf.util;
 
 import java.util.Iterator;
 import java.util.Map.Entry;
