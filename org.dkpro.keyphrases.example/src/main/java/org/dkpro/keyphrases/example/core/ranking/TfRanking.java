@@ -21,9 +21,9 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.dkpro.keyphrases.example.core.frequency.tfidf.util.FreqDist;
 import org.dkpro.keyphrases.type.Keyphrase;
 
-import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.util.FreqDist;
 
 /**
  * Ranks keyphrase annotations using the term frequency (tf) value of the keyphrase as the keyphrase's score.
