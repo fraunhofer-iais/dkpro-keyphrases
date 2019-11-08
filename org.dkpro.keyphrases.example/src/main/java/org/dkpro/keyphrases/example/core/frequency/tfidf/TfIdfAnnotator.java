@@ -30,6 +30,9 @@ import org.apache.uima.fit.descriptor.TypeCapability;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Level;
+import org.dkpro.keyphrases.example.core.frequency.tfidf.util.FreqDist;
+import org.dkpro.keyphrases.example.core.frequency.tfidf.util.TermIterator;
+import org.dkpro.keyphrases.example.core.frequency.tfidf.util.TfidfUtils;
 
 import de.tudarmstadt.ukp.dkpro.core.api.featurepath.FeaturePathException;
 import de.tudarmstadt.ukp.dkpro.core.api.featurepath.FeaturePathFactory;
@@ -37,9 +40,6 @@ import de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf;
 import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.model.DfModel;
 import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.model.DfStore;
 import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.model.SharedDfModel;
-import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.util.FreqDist;
-import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.util.TermIterator;
-import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.util.TfidfUtils;
 import eu.openminted.share.annotations.api.DocumentationResource;
 
 /**
