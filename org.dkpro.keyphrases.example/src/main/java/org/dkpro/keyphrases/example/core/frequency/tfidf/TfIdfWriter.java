@@ -24,12 +24,11 @@ import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.descriptor.ResourceMetaData;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
+import org.dkpro.keyphrases.example.core.frequency.tfidf.model.DfStore;
 import org.dkpro.keyphrases.example.core.frequency.tfidf.util.TermIterator;
 import org.dkpro.keyphrases.example.core.frequency.tfidf.util.TfidfUtils;
 
 import de.tudarmstadt.ukp.dkpro.core.api.parameter.ComponentParameters;
-import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.model.DfModel;
-import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.model.DfStore;
 import eu.openminted.share.annotations.api.DocumentationResource;
 import eu.openminted.share.annotations.api.Parameters;
 

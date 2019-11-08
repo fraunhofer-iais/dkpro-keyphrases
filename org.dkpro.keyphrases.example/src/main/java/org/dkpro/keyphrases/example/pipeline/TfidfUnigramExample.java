@@ -13,7 +13,6 @@ import org.dkpro.keyphrases.example.core.ranking.TfidfRanking;
 import org.dkpro.keyphrases.example.io.KeyphrasePrinter;
 import org.dkpro.keyphrases.type.Keyphrase;
 
-import de.tudarmstadt.ukp.dkpro.core.api.frequency.tfidf.type.Tfidf;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS_ADJ;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS_NOUN;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS_PROPN;

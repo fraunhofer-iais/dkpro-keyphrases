@@ -21,9 +21,7 @@ import java.io.Serializable;
 import java.util.Set;
 import java.util.TreeSet;
 
-import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.TfIdfAnnotator;
-import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.TfIdfWriter;
-import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.util.FreqDist;
+import org.dkpro.keyphrases.example.core.frequency.tfidf.util.FreqDist;
 
 /**
  * Container that stores the document frequency and additional data in a collection of documents. To

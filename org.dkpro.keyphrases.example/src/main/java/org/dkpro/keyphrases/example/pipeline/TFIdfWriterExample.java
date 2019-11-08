@@ -6,12 +6,12 @@ import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
 
 import org.dkpro.keyphrases.example.core.filter.NGramLengthFilter;
 import org.dkpro.keyphrases.example.core.frequency.tfidf.TfIdfWriter;
+import org.dkpro.keyphrases.example.core.frequency.tfidf.model.DfModel;
 import org.dkpro.keyphrases.example.core.frequency.tfidf.util.TfidfUtils;
 import org.dkpro.keyphrases.example.io.TestXmlReader;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.NGram;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.model.DfModel;
 import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
 import de.tudarmstadt.ukp.dkpro.core.ngrams.NGramAnnotator;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;

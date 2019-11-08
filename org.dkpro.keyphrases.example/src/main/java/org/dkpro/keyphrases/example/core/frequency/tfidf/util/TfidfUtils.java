@@ -26,9 +26,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import org.apache.commons.io.FileUtils;
-
-import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.model.DfModel;
-import de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.model.DfStore;
+import org.dkpro.keyphrases.example.core.frequency.tfidf.model.DfModel;
 
 /**
  * Serialization and deserialization methods.
