@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.tudarmstadt.ukp.dkpro.core.frequency.tfidf.model;
+package org.dkpro.keyphrases.example.core.frequency.tfidf.model;
 
 import static org.apache.uima.fit.factory.ExternalResourceFactory.bindResource;
 
