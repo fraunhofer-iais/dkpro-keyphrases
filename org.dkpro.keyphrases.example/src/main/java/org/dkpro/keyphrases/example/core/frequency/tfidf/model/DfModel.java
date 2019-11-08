@@ -47,4 +47,10 @@ public interface DfModel
      * @return if the model was created using strings converted to lowercase
      */
     public boolean getLowercase();
+
+    /**
+     * Discard terms which occur less than minimalFrequency times.
+     * @param minimalFrequency the minimal frequency
+     */
+    public void discardLowFrequencyTerms(int minimalFrequency);
 }

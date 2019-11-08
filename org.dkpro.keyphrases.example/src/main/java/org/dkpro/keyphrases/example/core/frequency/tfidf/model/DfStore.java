@@ -77,6 +77,12 @@ public class DfStore
     }
 
     @Override
+    public void discardLowFrequencyTerms(int minimalFrequency)
+    {
+        df.discardLowFrequencyTerms(minimalFrequency);
+    }
+
+    @Override
     public int getDf(String term)
     {
         return df.getCount(term);

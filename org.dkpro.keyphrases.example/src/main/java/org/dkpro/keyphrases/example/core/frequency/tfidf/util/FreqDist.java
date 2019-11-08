@@ -144,4 +144,13 @@ public class FreqDist<T>
         return totalCount;
     }
 
+    /**
+     * Discard objects which occur less than minimalFrequency times.
+     * @param minimalFrequency the minimal frequency
+     */
+    public void discardLowFrequencyTerms(int minimalFrequency)
+    {
+        counts.values().removeIf(value -> value < minimalFrequency);
+    }
+
 }

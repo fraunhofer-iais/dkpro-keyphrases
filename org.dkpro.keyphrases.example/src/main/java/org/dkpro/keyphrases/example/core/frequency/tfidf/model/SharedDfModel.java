@@ -103,4 +103,10 @@ public class SharedDfModel
         return dfModel.getLowercase();
     }
 
+    @Override
+    public void discardLowFrequencyTerms(int minimalFrequency)
+    {
+        dfModel.discardLowFrequencyTerms(minimalFrequency);
+    }
+
 }
