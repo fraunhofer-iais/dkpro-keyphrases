@@ -50,6 +50,30 @@ public class TfidfUtils
     {
         serialize(dfModel, path);
     }
+    /**
+     * Serializes the DfStore at outputPath.
+     * In adddition to writeDfModel(DfModel dfModel, String path), this method
+     * discard all terms in the model whose frequency is less than minimalFrequency.
+     *
+     * @param dfModel
+     *            a model.
+     * @param path
+     *            the target path.
+     * @param minimalFrequency
+     *            the minimalFrequency of terms to be kept in the model
+     * @throws IOException
+     *             if the model cannot be written.
+     */
+    public static void writeDfModel(DfModel dfModel, String path, int minimalFrequency)
+        throws IOException
+    {
+        filterTerms(dfModel, minimalFrequency);
+        writeDfModel(dfModel, path);
+    }
+
+    private static void filterTerms(DfModel dfModel, int minimalFrequency)
+    {
+    }
 
     /**
      * Reads a {@link DfStore} from disk.

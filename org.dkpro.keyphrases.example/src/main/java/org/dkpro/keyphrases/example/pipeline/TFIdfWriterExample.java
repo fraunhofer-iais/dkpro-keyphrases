@@ -40,7 +40,8 @@ public class TFIdfWriterExample {
 		        		TfIdfWriter.class,
                         TfIdfWriter.PARAM_TARGET_LOCATION, args[3],
                         TfIdfWriter.PARAM_FEATURE_PATH, NGram.class.getName(),
-                        TfIdfWriter.PARAM_LOWERCASE, false)
+                        TfIdfWriter.PARAM_LOWERCASE, false,
+                        TfIdfWriter.PARAM_MIN_FREQ, 2)
 		        		
 		        
 		    );

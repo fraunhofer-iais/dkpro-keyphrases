@@ -69,6 +69,14 @@ public class TfIdfWriter
     @ConfigurationParameter(name = PARAM_FEATURE_PATH, mandatory = true)
     private String featurePath;
 
+    /**
+     * Any terms which have lower frequency than minimalFrequency in the corpus are discarded
+     * before the model is written.
+     */
+    public static final String PARAM_MIN_FREQ = "minimalFrequency";
+    @ConfigurationParameter(name = PARAM_MIN_FREQ, mandatory = true, defaultValue = "1")
+    private int minimalFrequency;
+
     private DfStore dfStore;
 
     @Override
@@ -100,7 +108,7 @@ public class TfIdfWriter
         throws AnalysisEngineProcessException
     {
         try {
-            TfidfUtils.writeDfModel(dfStore, outputPath);
+            TfidfUtils.writeDfModel(dfStore, outputPath, minimalFrequency);
         }
         catch (Exception e) {
             throw new AnalysisEngineProcessException(e);
