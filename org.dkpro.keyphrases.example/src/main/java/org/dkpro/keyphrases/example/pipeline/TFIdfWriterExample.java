@@ -4,6 +4,7 @@ import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDesc
 import static org.apache.uima.fit.factory.CollectionReaderFactory.createReaderDescription;
 import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
 
+import org.dkpro.keyphrases.example.core.filter.NGramCharFilter;
 import org.dkpro.keyphrases.example.core.filter.NGramLengthFilter;
 import org.dkpro.keyphrases.example.core.frequency.tfidf.TfIdfWriter;
 import org.dkpro.keyphrases.example.core.frequency.tfidf.model.DfModel;
@@ -36,6 +37,8 @@ public class TFIdfWriterExample {
                 createEngineDescription(NGramLengthFilter.class,
                         NGramLengthFilter.PARAM_MIN_LENGTH, 3,
                         NGramLengthFilter.PARAM_MAX_LENGTH, 100),
+                createEngineDescription(NGramCharFilter.class,
+                        NGramCharFilter.PARAM_CHAR_SET, "[A-ZÄÖÜa-zäöüß ]+"),
 		        createEngineDescription(
 		        		TfIdfWriter.class,
                         TfIdfWriter.PARAM_TARGET_LOCATION, args[3],
