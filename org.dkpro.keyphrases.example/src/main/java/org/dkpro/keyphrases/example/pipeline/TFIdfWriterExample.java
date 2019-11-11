@@ -34,8 +34,8 @@ public class TFIdfWriterExample {
 		        createEngineDescription(NGramAnnotator.class,
 		        		NGramAnnotator.PARAM_N, 2),
                 createEngineDescription(NGramLengthFilter.class,
-                        NGramLengthFilter.MIN_NGRAM_LENGTH, 3,
-                        NGramLengthFilter.MAX_NGRAM_LENGTH, 100),
+                        NGramLengthFilter.PARAM_MIN_LENGTH, 3,
+                        NGramLengthFilter.PARAM_MAX_LENGTH, 100),
 		        createEngineDescription(
 		        		TfIdfWriter.class,
                         TfIdfWriter.PARAM_TARGET_LOCATION, args[3],

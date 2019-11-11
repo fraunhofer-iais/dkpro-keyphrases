@@ -13,12 +13,12 @@ public class NGramLengthFilter
     extends JCasAnnotator_ImplBase
 {
 
-    public static final String MIN_NGRAM_LENGTH = "MinKeyphraseLength";
-    @ConfigurationParameter(name = MIN_NGRAM_LENGTH, mandatory = true)
+    public static final String PARAM_MIN_LENGTH = "minLength";
+    @ConfigurationParameter(name = PARAM_MIN_LENGTH, mandatory = true)
     private int minLength;
 
-    public static final String MAX_NGRAM_LENGTH = "MaxKeyphraseLength";
-    @ConfigurationParameter(name = MAX_NGRAM_LENGTH, mandatory = true)
+    public static final String PARAM_MAX_LENGTH = "maxLength";
+    @ConfigurationParameter(name = PARAM_MAX_LENGTH, mandatory = true)
     private int maxLength;
 
     /*
