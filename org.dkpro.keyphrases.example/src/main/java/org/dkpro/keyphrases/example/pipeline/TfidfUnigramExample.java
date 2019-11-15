@@ -36,16 +36,15 @@ public class TfidfUnigramExample {
                     TestXmlReader.PARAM_LANGUAGE, "de"),
 	        createEngineDescription(BreakIteratorSegmenter.class),
 	        createEngineDescription(CandidateAnnotatorFactory.getKeyphraseCandidateAnnotator_token(false)),
+            createEngineDescription(CharacterLengthFilter.class,
+                    CharacterLengthFilter.MIN_KEYPHRASE_LENGTH, 3,
+                    CharacterLengthFilter.MAX_KEYPHRASE_LENGTH, 100),
 	        createEngineDescription(TfIdfAnnotator.class,
                     TfIdfAnnotator.PARAM_TFDF_PATH, args[3],
 	        		TfIdfAnnotator.PARAM_FEATURE_PATH, Token.class.getName(),
 	        		TfIdfAnnotator.PARAM_IDF_MODE, TfIdfAnnotator.WeightingModeIdf.LOG,
 	        		TfIdfAnnotator.PARAM_TF_MODE, TfIdfAnnotator.WeightingModeTf.NORMAL),
 	        createEngineDescription(TfidfRanking.class),
-	        createEngineDescription(
-                    CharacterLengthFilter.class,
-                    CharacterLengthFilter.MIN_KEYPHRASE_LENGTH, 2,
-                    CharacterLengthFilter.MAX_KEYPHRASE_LENGTH, 100),
 	        createEngineDescription(KeyphrasePrinter.class)
 	    );
 		

@@ -40,9 +40,8 @@ public class TfidfNgramExample {
 		        createEngineDescription(NGramAnnotator.class,
 		        		NGramAnnotator.PARAM_N, 2),
 		        createEngineDescription(CandidateAnnotatorFactory.getKeyphraseCandidateAnnotator_ngram(false)),
-		        createEngineDescription(
-	                    CharacterLengthFilter.class,
-	                    CharacterLengthFilter.MIN_KEYPHRASE_LENGTH, 2,
+		        createEngineDescription(CharacterLengthFilter.class,
+	                    CharacterLengthFilter.MIN_KEYPHRASE_LENGTH, 3,
 	                    CharacterLengthFilter.MAX_KEYPHRASE_LENGTH, 100),
 		        createEngineDescription(TfIdfAnnotator.class,
                         TfIdfAnnotator.PARAM_TFDF_PATH, args[3],
@@ -51,10 +50,6 @@ public class TfidfNgramExample {
 		        		TfIdfAnnotator.PARAM_TF_MODE, TfIdfAnnotator.WeightingModeTf.NORMAL),
 		        createEngineDescription(TfidfRanking.class,
 		        		TfidfRanking.PARAM_AGGREGATE, TfidfRanking.TfidfAggregate.avg),
-		        createEngineDescription(
-	                    CharacterLengthFilter.class,
-	                    CharacterLengthFilter.MIN_KEYPHRASE_LENGTH, 2,
-	                    CharacterLengthFilter.MAX_KEYPHRASE_LENGTH, 100),
 		        createEngineDescription(KeyphrasePrinter.class)
 		    );
 		
