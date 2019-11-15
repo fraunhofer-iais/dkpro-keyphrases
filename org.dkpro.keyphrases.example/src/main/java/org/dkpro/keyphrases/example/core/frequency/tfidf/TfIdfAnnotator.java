@@ -144,10 +144,10 @@ public class TfIdfAnnotator
 
                 int tf = termFrequencies.getCount(term);
                 int df = dfModel.getDf(term);
-                if (df == 0) {
-                    getContext().getLogger().log(Level.WARNING,
-                            "Term [" + term + "] not found in dfStore!");
-                }
+//                if (df == 0) {
+//                    getContext().getLogger().log(Level.WARNING,
+//                            "Term [" + term + "] not found in dfStore!");
+//                }
 
                 double tfidf = getWeightedTf(tf) * getWeightedIdf(df, dfModel.getDocumentCount());
 
