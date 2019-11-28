@@ -11,6 +11,7 @@ import org.dkpro.keyphrases.example.core.frequency.tfidf.TfIdfAnnotator;
 import org.dkpro.keyphrases.example.core.ranking.TfRanking;
 import org.dkpro.keyphrases.example.core.ranking.TfidfRanking;
 import org.dkpro.keyphrases.example.io.KeyphrasePrinter;
+import org.dkpro.keyphrases.example.io.TestXmlReader;
 import org.dkpro.keyphrases.type.Keyphrase;
 
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS_ADJ;
@@ -28,10 +29,11 @@ public class TfidfPosExample {
 	public static void main(String[] args) throws Exception {
 
 		runPipeline(
-		        createReaderDescription(TextReader.class,
-		            TextReader.PARAM_SOURCE_LOCATION, args[0],
-		            TextReader.PARAM_PATTERNS, args[1],
-		            TextReader.PARAM_LANGUAGE, "de"),
+                createReaderDescription(TestXmlReader.class,
+                        TestXmlReader.PARAM_SOURCE_LOCATION, args[0],
+                        TestXmlReader.PARAM_PATTERNS, args[1],
+                        TestXmlReader.PARAM_XPATH, args[2],
+                        TestXmlReader.PARAM_LANGUAGE, "de"),
 		        createEngineDescription(BreakIteratorSegmenter.class),
 		        createEngineDescription(OpenNlpPosTagger.class,
 		        		OpenNlpPosTagger.PARAM_VARIANT, "maxent"),
@@ -40,17 +42,17 @@ public class TfidfPosExample {
 		        createEngineDescription(CandidateAnnotatorFactory.getKeyphraseCandidateAnnotator(POS_ADJ.class.getName(), false)),
 		        createEngineDescription(KeyphraseMerger.class,
 		        		KeyphraseMerger.PARAM_MAX_LENGTH, 2),
+                createEngineDescription(
+                        CharacterLengthFilter.class,
+                        CharacterLengthFilter.MIN_KEYPHRASE_LENGTH, 3,
+                        CharacterLengthFilter.MAX_KEYPHRASE_LENGTH, 100),
 		        createEngineDescription(TfIdfAnnotator.class,
-                        TfIdfAnnotator.PARAM_TFDF_PATH, args[2],
+                        TfIdfAnnotator.PARAM_TFDF_PATH, args[3],
 		        		TfIdfAnnotator.PARAM_FEATURE_PATH, Keyphrase.class.getName(),
 		        		TfIdfAnnotator.PARAM_IDF_MODE, TfIdfAnnotator.WeightingModeIdf.LOG,
 		        		TfIdfAnnotator.PARAM_TF_MODE, TfIdfAnnotator.WeightingModeTf.NORMAL),
 		        createEngineDescription(TfidfRanking.class,
 		        		TfidfRanking.PARAM_AGGREGATE, TfidfRanking.TfidfAggregate.avg),
-		        createEngineDescription(
-	                    CharacterLengthFilter.class,
-	                    CharacterLengthFilter.MIN_KEYPHRASE_LENGTH, 2,
-	                    CharacterLengthFilter.MAX_KEYPHRASE_LENGTH, 100),
 		        createEngineDescription(KeyphrasePrinter.class)
 		    );
 	}
