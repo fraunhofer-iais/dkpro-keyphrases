@@ -41,7 +41,7 @@ public class TfidfPosExample {
 		        createEngineDescription(CandidateAnnotatorFactory.getKeyphraseCandidateAnnotator(POS_NOUN.class.getName(), false)),
 		        createEngineDescription(CandidateAnnotatorFactory.getKeyphraseCandidateAnnotator(POS_ADJ.class.getName(), false)),
 		        createEngineDescription(KeyphraseMerger.class,
-		        		KeyphraseMerger.PARAM_MAX_LENGTH, 2),
+		        		KeyphraseMerger.PARAM_MAX_LENGTH, 3),
                 createEngineDescription(
                         CharacterLengthFilter.class,
                         CharacterLengthFilter.MIN_KEYPHRASE_LENGTH, 3,

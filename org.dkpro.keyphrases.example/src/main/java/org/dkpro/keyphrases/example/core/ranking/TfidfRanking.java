@@ -61,14 +61,17 @@ public class TfidfRanking extends JCasAnnotator_ImplBase {
         // TODO should check first, if there is a tf.idf value for the full candidate before aggregating over the components
         for (Keyphrase keyphrase : select(jcas, Keyphrase.class)) {
             List<Double> tfidfScores = new ArrayList<Double>();
+            System.out.println("=======");
+            System.out.println(keyphrase.getCoveredText());
             for (Tfidf tfidf : selectCovered(jcas, Tfidf.class, keyphrase)) {
+                System.out.println(tfidf.getCoveredText());
                 tfidfScores.add(tfidf.getTfidfValue());
             }
 
             keyphrase.setScore(
                     getAggregatedTfidfScore(tfidfScores, aggregateFunction)
             );
-//            System.out.println(keyphrase.getKeyphrase() + " - " + getAggregatedTfidfScore(tfidfScores, aggregateFunction));
+            System.out.println(keyphrase.getKeyphrase() + " - " + getAggregatedTfidfScore(tfidfScores, aggregateFunction));
         }
     }
 
