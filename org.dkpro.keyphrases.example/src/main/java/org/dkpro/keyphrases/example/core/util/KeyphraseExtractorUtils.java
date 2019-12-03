@@ -51,10 +51,23 @@ public class KeyphraseExtractorUtils {
     	List<Keyphrase> sortedKeyphrases = getTopRankedKeyphrases(keyphrases, keyphrases.size());
     	
     	List<Keyphrase> uniqueKeyphrases = new ArrayList<Keyphrase>();
-        Set<String> keyphraseStrings = new HashSet<String>();
+    	List<Keyphrase> toBeRemoved = new ArrayList<Keyphrase>();
         for (Keyphrase keyphrase : sortedKeyphrases) {
-            if (!keyphraseStrings.contains(keyphrase.getKeyphrase())) {
-                keyphraseStrings.add(keyphrase.getKeyphrase());
+            boolean toBeAdded = true;
+            for (Keyphrase uniqueKeyphrase : uniqueKeyphrases) {
+                if (uniqueKeyphrase.getKeyphrase().contains(keyphrase.getKeyphrase())
+                        || keyphrase.getKeyphrase().contains(uniqueKeyphrase.getKeyphrase())) {
+                    if (uniqueKeyphrase.getScore() < keyphrase.getScore()) {
+                        toBeRemoved.add(uniqueKeyphrase);
+                    }
+                    else {
+                        toBeAdded = false;
+                    }
+                }
+            }
+            uniqueKeyphrases.removeAll(toBeRemoved);
+            toBeRemoved.clear();
+            if (toBeAdded) {
                 uniqueKeyphrases.add(keyphrase);
             }
         }

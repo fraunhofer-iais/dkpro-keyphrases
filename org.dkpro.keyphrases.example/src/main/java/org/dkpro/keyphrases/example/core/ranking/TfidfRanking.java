@@ -18,6 +18,7 @@
 package org.dkpro.keyphrases.example.core.ranking;
 
 import static org.apache.uima.fit.util.JCasUtil.select;
+import static org.apache.uima.fit.util.JCasUtil.selectAt;
 import static org.apache.uima.fit.util.JCasUtil.selectCovered;
 
 import java.util.ArrayList;
@@ -57,21 +58,17 @@ public class TfidfRanking extends JCasAnnotator_ImplBase {
 
     @Override
     public void process(JCas jcas) throws AnalysisEngineProcessException {
-
-        // TODO should check first, if there is a tf.idf value for the full candidate before aggregating over the components
         for (Keyphrase keyphrase : select(jcas, Keyphrase.class)) {
-            List<Double> tfidfScores = new ArrayList<Double>();
-            System.out.println("=======");
-            System.out.println(keyphrase.getCoveredText());
-            for (Tfidf tfidf : selectCovered(jcas, Tfidf.class, keyphrase)) {
-                System.out.println(tfidf.getCoveredText());
-                tfidfScores.add(tfidf.getTfidfValue());
+            Tfidf tfidf_single = selectAt(jcas, Tfidf.class, keyphrase.getBegin(), keyphrase.getEnd()).get(0);
+            double score = tfidf_single.getTfidfValue();
+            if (score == 0) {
+                List<Double> tfidfScores = new ArrayList<Double>();
+                for (Tfidf tfidf_covered : selectCovered(jcas, Tfidf.class, keyphrase)) {
+                    tfidfScores.add(tfidf_covered.getTfidfValue());
+                }
+                score = getAggregatedTfidfScore(tfidfScores, aggregateFunction);
             }
-
-            keyphrase.setScore(
-                    getAggregatedTfidfScore(tfidfScores, aggregateFunction)
-            );
-            System.out.println(keyphrase.getKeyphrase() + " - " + getAggregatedTfidfScore(tfidfScores, aggregateFunction));
+            keyphrase.setScore(score);
         }
     }
 
